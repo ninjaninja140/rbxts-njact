@@ -1,0 +1,55 @@
+{
+	"name": "@njact/components",
+	"version": "1.0.0",
+	"main": "out/init.lua",
+	"license": "MIT",
+	"scripts": {
+		"build": "rbxtsc",
+		"watch": "rbxtsc -w",
+		"prepublishOnly": "yarn build",
+		"devtools": "react-devtools"
+	},
+	"types": "out/index.d.ts",
+	"exports": {
+		"./utils/*": {
+			"types": "./out/utils/*.d.ts",
+			"default": "./out/utils/*.lua"
+		},
+		"./utils/store": {
+			"types": "./out/utils/store/init.d.ts",
+			"default": "./out/utils/store/init.lua"
+		}
+	},
+	"files": [
+		"out",
+		"!**/*.tsbuildinfo"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.14",
+		"@rbxts/compiler-types": "^3.0.0-types.0",
+		"@rbxts/react-devtools": "17.3.7-ts.1",
+		"@rbxts/react-devtools-core": "17.3.7-ts.1",
+		"@rbxts/types": "^1.0.918",
+		"@rbxts/ui-labs": "^2.4.2",
+		"@typescript/native-preview": "beta",
+		"react-devtools": "4.11.0",
+		"rkkit": "^0.0.1",
+		"roblox-ts": "^3.0.0",
+		"typescript": "latest"
+	},
+	"peerDependencies": {
+		"@rbxts/react": "17.3.7-ts.1",
+		"@rbxts/react-globals": "17.3.7-ts.1",
+		"@rbxts/react-roblox": "17.3.7-ts.1"
+	},
+	"packageManager": "yarn@4.14.1",
+	"dependencies": {
+		"@rbxts/react": "17.3.7-ts.1",
+		"@rbxts/react-globals": "17.3.7-ts.1",
+		"@rbxts/react-roblox": "17.3.7-ts.1",
+		"@rbxts/string-utils": "^1.0.3"
+	}
+}

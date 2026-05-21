@@ -1,0 +1,6 @@
+{
+	"js/ts.experimental.useTsgo": true,
+	"files.eol": "\n",
+	"deno.enable": false,
+	"stylua.targetReleaseVersion": "latest"
+}

@@ -1,0 +1,32 @@
+{
+	"name": "njact/components",
+	"globIgnorePaths": ["**/package.json", "**/tsconfig.json"],
+	"tree": {
+		"$ignoreUnknownInstances": true,
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"$ignoreUnknownInstances": true,
+
+			"rbxts_include": {
+				"$path": "include",
+				"node_modules": {
+					"$className": "Folder",
+					"@rbxts": {
+						"$path": "node_modules/@rbxts"
+					},
+					"@rbxts-js": {
+						"$path": "node_modules/@rbxts-js"
+					}
+				}
+			}
+		},
+		"StarterGui": {
+			"$className": "StarterGui",
+			"$ignoreUnknownInstances": true,
+			"njact-ui": {
+				"$path": "out"
+			}
+		}
+	}
+}
