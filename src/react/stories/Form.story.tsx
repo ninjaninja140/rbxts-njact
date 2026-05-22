@@ -1,4 +1,4 @@
-import React, { useState } from '@rbxts/react';
+import React from '@rbxts/react';
 import ReactDOM from '@rbxts/react-roblox';
 import { Choose, CreateReactStory, type InferProps, Slider } from '@rbxts/ui-labs';
 import { Div } from '../Div';
@@ -23,7 +23,6 @@ const story = CreateReactStory(
 	},
 	(props: InferProps<typeof controls>) => {
 		const { component, fontSize, borderRadius } = props.controls;
-		const [formData, setFormData] = useState<Map<string, string>>(new Map());
 
 		return (
 			<frame Size={new UDim2(1, 0, 1, 0)} BackgroundColor3={Color3.fromRGB(30, 30, 35)} BorderSizePixel={0}>
@@ -43,7 +42,6 @@ const story = CreateReactStory(
 							autoSize: 'xy',
 						}}
 						onSubmit={(data) => {
-							setFormData(data);
 							print('Form submitted:', data);
 						}}
 					>
