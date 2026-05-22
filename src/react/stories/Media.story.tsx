@@ -1,13 +1,13 @@
 import React, { useState } from '@rbxts/react';
 import ReactDOM from '@rbxts/react-roblox';
 import { Choose, CreateReactStory, type InferProps, Slider } from '@rbxts/ui-labs';
+import { Button } from '../Button';
 import { Div } from '../Div';
 import { Audio, Video } from '../Media';
-import { Button } from '../Button';
 import { P } from '../Text';
 
 const controls = {
-	component: Choose(['Audio', 'Video'] as const, 0),
+	component: Choose(['Audio', 'Video'] as const, 1),
 	autoPlay: false,
 	loop: false,
 	volume: Slider(1, 0, 1, 0.1),
@@ -20,7 +20,8 @@ const story = CreateReactStory(
 		react: React,
 		reactRoblox: ReactDOM,
 		controls,
-		summary: 'Media components for audio and video playback. Audio renders as a Sound object; Video renders as a VideoFrame. Note: Playback is controlled via autoPlay and loop props; button controls are for demonstration.',
+		summary:
+			'Media components for audio and video playback. Audio renders as a Sound object; Video renders as a VideoFrame. Note: Playback is controlled via autoPlay and loop props; button controls are for demonstration.',
 	},
 	(props: InferProps<typeof controls>) => {
 		const { component, autoPlay, loop, volume, playbackSpeed } = props.controls;
@@ -60,7 +61,10 @@ const story = CreateReactStory(
 
 						<Div style={{ display: 'column', gap: 8, autoSize: 'xy' }}>
 							<P style={{ color: '#f1f5f9', fontSize: 14 }} Text='Audio Player' />
-							<P style={{ color: '#64748b', fontSize: 12 }} Text={`Status: ${isPlaying ? 'Playing' : 'Stopped'}`} />
+							<P
+								style={{ color: '#64748b', fontSize: 12 }}
+								Text={`Status: ${isPlaying ? 'Playing' : 'Stopped'}`}
+							/>
 
 							<Div style={{ display: 'row', gap: 8, autoSize: 'xy' }}>
 								<Button
@@ -92,7 +96,10 @@ const story = CreateReactStory(
 								/>
 							</Div>
 
-							<P style={{ color: '#64748b', fontSize: 11 }} Text={`Volume: ${math.floor(volume * 100)}%`} />
+							<P
+								style={{ color: '#64748b', fontSize: 11 }}
+								Text={`Volume: ${math.floor(volume * 100)}%`}
+							/>
 							<P style={{ color: '#64748b', fontSize: 11 }} Text={`Speed: ${tostring(playbackSpeed)}x`} />
 						</Div>
 					</Div>
@@ -133,7 +140,10 @@ const story = CreateReactStory(
 
 						<Div style={{ display: 'column', gap: 8, autoSize: 'xy' }}>
 							<P style={{ color: '#f1f5f9', fontSize: 14 }} Text='Video Player' />
-							<P style={{ color: '#64748b', fontSize: 12 }} Text={`Status: ${isPlaying ? 'Playing' : 'Stopped'}`} />
+							<P
+								style={{ color: '#64748b', fontSize: 12 }}
+								Text={`Status: ${isPlaying ? 'Playing' : 'Stopped'}`}
+							/>
 
 							<Div style={{ display: 'row', gap: 8, autoSize: 'xy' }}>
 								<Button
@@ -165,7 +175,10 @@ const story = CreateReactStory(
 								/>
 							</Div>
 
-							<P style={{ color: '#64748b', fontSize: 11 }} Text={`Volume: ${math.floor(volume * 100)}%`} />
+							<P
+								style={{ color: '#64748b', fontSize: 11 }}
+								Text={`Volume: ${math.floor(volume * 100)}%`}
+							/>
 						</Div>
 					</Div>
 				)}

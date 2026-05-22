@@ -6,7 +6,7 @@ import { Img } from '../Img';
 import { P } from '../Text';
 
 const controls = {
-	scaleType: Choose(['stretch', 'slice', 'tile', 'fit', 'crop'] as const, 0),
+	scaleType: Choose(['stretch', 'slice', 'tile', 'fit', 'crop'] as const, 1),
 	width: Slider(200, 100, 400, 10),
 	height: Slider(200, 100, 400, 10),
 	opacity: Slider(1, 0, 1, 0.1),

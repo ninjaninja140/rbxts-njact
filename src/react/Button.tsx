@@ -47,6 +47,7 @@ export function Button(props: IButtonProps) {
 			AutomaticSize={hasExplicitSize ? Enum.AutomaticSize.None : Enum.AutomaticSize.XY}
 			TextWrap={props.style?.textWrap ?? true}
 			Event={Event}
+			Text={''}
 		>
 			{styleChildren}
 			<uilistlayout

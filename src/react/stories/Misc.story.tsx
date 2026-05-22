@@ -2,11 +2,11 @@ import React from '@rbxts/react';
 import ReactDOM from '@rbxts/react-roblox';
 import { Choose, CreateReactStory, type InferProps } from '@rbxts/ui-labs';
 import { Div } from '../Div';
-import { Hr, Br, ScrollDiv, Details, Figure, Figcaption, Address } from '../Misc';
+import { Address, Br, Details, Figcaption, Figure, Hr, ScrollDiv } from '../Misc';
 import { P } from '../Text';
 
 const controls = {
-	component: Choose(['Hr', 'Br', 'ScrollDiv', 'Details', 'Figure', 'Address'] as const, 0),
+	component: Choose(['Hr', 'Br', 'ScrollDiv', 'Details', 'Figure', 'Address'] as const, 1),
 };
 
 const story = CreateReactStory(
@@ -15,7 +15,8 @@ const story = CreateReactStory(
 		react: React,
 		reactRoblox: ReactDOM,
 		controls,
-		summary: 'Miscellaneous utility components including Hr, Br, ScrollDiv, Details, Figure, Figcaption, and Address.',
+		summary:
+			'Miscellaneous utility components including Hr, Br, ScrollDiv, Details, Figure, Figcaption, and Address.',
 	},
 	(props: InferProps<typeof controls>) => {
 		const { component } = props.controls;
@@ -117,7 +118,10 @@ const story = CreateReactStory(
 						}}
 					>
 						<Details open={false} summary='Click to expand details'>
-							<P style={{ color: '#f1f5f9', fontSize: 14 }} Text='This is the hidden content that appears when the details element is expanded.' />
+							<P
+								style={{ color: '#f1f5f9', fontSize: 14 }}
+								Text='This is the hidden content that appears when the details element is expanded.'
+							/>
 							<P style={{ color: '#cbd5e1', fontSize: 12 }} Text='Additional details can go here.' />
 						</Details>
 					</Div>

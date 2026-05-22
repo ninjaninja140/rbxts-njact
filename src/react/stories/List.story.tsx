@@ -2,11 +2,11 @@ import React from '@rbxts/react';
 import ReactDOM from '@rbxts/react-roblox';
 import { Choose, CreateReactStory, type InferProps, Slider } from '@rbxts/ui-labs';
 import { Div } from '../Div';
-import { Ul, Ol, Li, Dl, Dt, Dd } from '../List';
+import { Dd, Dl, Dt, Li, Ol, Ul } from '../List';
 import { P } from '../Text';
 
 const controls = {
-	component: Choose(['Ul', 'Ol', 'Dl'] as const, 0),
+	component: Choose(['Ul', 'Ol', 'Dl'] as const, 1),
 	fontSize: Slider(14, 10, 24, 1),
 	gap: Slider(4, 0, 16, 1),
 };
@@ -17,7 +17,8 @@ const story = CreateReactStory(
 		react: React,
 		reactRoblox: ReactDOM,
 		controls,
-		summary: 'List components including Ul (unordered), Ol (ordered), and Dl (definition lists) with Li, Dt, and Dd elements.',
+		summary:
+			'List components including Ul (unordered), Ol (ordered), and Dl (definition lists) with Li, Dt, and Dd elements.',
 	},
 	(props: InferProps<typeof controls>) => {
 		const { component, fontSize, gap } = props.controls;
@@ -69,15 +70,15 @@ const story = CreateReactStory(
 							<Dd style={{ color: '#f1f5f9', fontSize }} Text='Cascading Style Sheets' />
 
 							<Dt style={{ color: '#60a5fa', fontSize }} Text='JavaScript' />
-							<Dd style={{ color: '#f1f5f9', fontSize }} Text='A programming language commonly used for web development' />
+							<Dd
+								style={{ color: '#f1f5f9', fontSize }}
+								Text='A programming language commonly used for web development'
+							/>
 						</Dl>
 					)}
 				</Div>
 
-				<P
-					style={{ color: '#64748b', fontSize: 11 }}
-					Text={`Gap: ${gap}px`}
-				/>
+				<P style={{ color: '#64748b', fontSize: 11 }} Text={`Gap: ${gap}px`} />
 			</frame>
 		);
 	}

@@ -1,6 +1,6 @@
 import React from '@rbxts/react';
 
-export type ReactChild = React.Element | string | undefined | false;
+export type ReactChild = React.Element | string | number | undefined | false;
 export type ReactChildren = ReactChild | ReactChild[];
 
 export function resolveChildren(children: ReactChildren | undefined): {
@@ -16,8 +16,13 @@ export function resolveChildren(children: ReactChildren | undefined): {
 
 	for (const child of items) {
 		if (child === undefined || child === false) continue;
-		if (typeIs(child, 'string')) text = (text ?? '') + child;
-		else nodes.push(child as React.Element);
+
+		if (typeIs(child, 'string') || typeIs(child, 'number')) {
+			text = (text ?? '') + tostring(child);
+			continue;
+		}
+
+		nodes.push(child as React.Element);
 	}
 
 	return { text, nodes };

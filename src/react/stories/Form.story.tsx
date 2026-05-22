@@ -1,14 +1,14 @@
 import React from '@rbxts/react';
 import ReactDOM from '@rbxts/react-roblox';
 import { Choose, CreateReactStory, type InferProps, Slider } from '@rbxts/ui-labs';
+import { Button } from '../Button';
 import { Div } from '../Div';
-import { Form, Label, Fieldset, Textarea, Select, Option } from '../Form';
+import { Fieldset, Form, Label, Option, Select, Textarea } from '../Form';
 import { Input } from '../Input';
 import { P } from '../Text';
-import { Button } from '../Button';
 
 const controls = {
-	component: Choose(['Form + Input', 'Label', 'Fieldset', 'Textarea', 'Select + Option'] as const, 0),
+	component: Choose(['Form + Input', 'Label', 'Fieldset', 'Textarea', 'Select + Option'] as const, 1),
 	fontSize: Slider(14, 8, 32, 1),
 	borderRadius: Slider(6, 0, 24, 1),
 };
@@ -91,7 +91,11 @@ const story = CreateReactStory(
 				{component === 'Label' && (
 					<Div style={{ display: 'column', gap: 12, autoSize: 'xy' }}>
 						<Label htmlFor='test' style={{ color: '#f1f5f9', fontSize }} Text='This is a Label Component' />
-						<Label htmlFor='test2' style={{ color: '#60a5fa', fontSize, fontWeight: 'bold' }} Text='Bold Label' />
+						<Label
+							htmlFor='test2'
+							style={{ color: '#60a5fa', fontSize, fontWeight: 'bold' }}
+							Text='Bold Label'
+						/>
 					</Div>
 				)}
 

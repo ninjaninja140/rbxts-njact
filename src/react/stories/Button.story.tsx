@@ -49,7 +49,7 @@ const story = CreateReactStory(
 						padding: [10, 20],
 					}}
 					onClick={() => print('Button clicked')}
-				/>
+				></Button>
 			</frame>
 		);
 	}

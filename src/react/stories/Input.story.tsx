@@ -37,6 +37,7 @@ function ControlledInput(props: {
 					color: '#f1f5f9',
 					padding: [8, 12],
 					width: 280,
+					height: 50,
 				}}
 				onChange={(text) => setValue(text)}
 				onCommit={(text, enter) => print(`Committed: "${text}" (enter=${tostring(enter)})`)}
