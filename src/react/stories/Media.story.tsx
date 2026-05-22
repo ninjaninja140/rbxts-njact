@@ -20,11 +20,11 @@ const story = CreateReactStory(
 		react: React,
 		reactRoblox: ReactDOM,
 		controls,
-		summary: 'Media components for audio and video playback. Audio renders as a Sound object; Video renders as a VideoFrame.',
+		summary: 'Media components for audio and video playback. Audio renders as a Sound object; Video renders as a VideoFrame. Note: Playback is controlled via autoPlay and loop props; button controls are for demonstration.',
 	},
 	(props: InferProps<typeof controls>) => {
 		const { component, autoPlay, loop, volume, playbackSpeed } = props.controls;
-		const [isPlaying, setIsPlaying] = useState(false);
+		const [isPlaying, setIsPlaying] = useState(autoPlay);
 
 		return (
 			<frame Size={new UDim2(1, 0, 1, 0)} BackgroundColor3={Color3.fromRGB(30, 30, 35)} BorderSizePixel={0}>
@@ -73,7 +73,7 @@ const story = CreateReactStory(
 										padding: [8, 16],
 										width: 100,
 									}}
-									onClick={() => print(isPlaying ? 'Pausing' : 'Playing')}
+									onClick={() => print(isPlaying ? 'Pausing (demo)' : 'Playing (demo)')}
 								/>
 								<Button
 									Text='Stop'
@@ -87,7 +87,7 @@ const story = CreateReactStory(
 									}}
 									onClick={() => {
 										setIsPlaying(false);
-										print('Stopped');
+										print('Stopped (demo)');
 									}}
 								/>
 							</Div>
@@ -146,7 +146,7 @@ const story = CreateReactStory(
 										padding: [8, 16],
 										width: 100,
 									}}
-									onClick={() => print(isPlaying ? 'Pausing' : 'Playing')}
+									onClick={() => print(isPlaying ? 'Pausing (demo)' : 'Playing (demo)')}
 								/>
 								<Button
 									Text='Stop'
@@ -160,7 +160,7 @@ const story = CreateReactStory(
 									}}
 									onClick={() => {
 										setIsPlaying(false);
-										print('Stopped');
+										print('Stopped (demo)');
 									}}
 								/>
 							</Div>
