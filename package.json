@@ -7,7 +7,8 @@
 		"build": "rbxtsc",
 		"watch": "rbxtsc -w",
 		"prepublishOnly": "yarn build",
-		"devtools": "react-devtools"
+		"devtools": "react-devtools",
+		"postinstall": "node scripts/patch-react-roblox.js"
 	},
 	"types": "out/index.d.ts",
 	"exports": {
@@ -35,6 +36,7 @@
 		"@rbxts/types": "^1.0.923",
 		"@rbxts/ui-labs": "^2.4.2",
 		"@typescript/native-preview": "^7.0.0-dev.20260522.1",
+		"patch-package": "^8.0.1",
 		"react-devtools": "4.11.0",
 		"rkkit": "^0.0.1",
 		"roblox-ts": "^3.0.0",
