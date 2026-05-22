@@ -1,9 +1,9 @@
-import React, { useState } from '@rbxts/react';
+import React from '@rbxts/react';
 import ReactDOM from '@rbxts/react-roblox';
 import { Choose, CreateReactStory, type InferProps } from '@rbxts/ui-labs';
 import { Div } from '../Div';
 import { Hr, Br, ScrollDiv, Details, Figure, Figcaption, Address } from '../Misc';
-import { P, Span } from '../Text';
+import { P } from '../Text';
 
 const controls = {
 	component: Choose(['Hr', 'Br', 'ScrollDiv', 'Details', 'Figure', 'Address'] as const, 0),
@@ -19,7 +19,6 @@ const story = CreateReactStory(
 	},
 	(props: InferProps<typeof controls>) => {
 		const { component } = props.controls;
-		const [detailsOpen, setDetailsOpen] = useState(false);
 
 		return (
 			<frame Size={new UDim2(1, 0, 1, 0)} BackgroundColor3={Color3.fromRGB(30, 30, 35)} BorderSizePixel={0}>

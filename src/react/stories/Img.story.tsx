@@ -58,7 +58,7 @@ const story = CreateReactStory(
 
 					<P
 						style={{ color: '#64748b', fontSize: 11 }}
-						Text='Note: Actual image visibility depends on SoundId asset availability'
+						Text='Note: Actual image visibility depends on the image asset availability'
 					/>
 				</Div>
 			</frame>
