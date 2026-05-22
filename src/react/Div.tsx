@@ -2,16 +2,14 @@ import React from '@rbxts/react';
 import { computeStyle } from '../utils/computeStyle';
 import { mapEvents } from '../utils/mapEvents';
 import { omitProps } from '../utils/omitProps';
-import type { BaseProps } from '../utils/types/common';
+import { resolveChildren } from '../utils/resolveChildren';
+import type { ContainerProps } from '../utils/types/common';
 
-export interface IContainerProps extends BaseProps {
-	children?: React.Element | React.Element[];
-}
-
-function Container(props: IContainerProps, displayName: string) {
+function Container(props: ContainerProps) {
 	const robloxProps = omitProps(props);
 	const { Event } = mapEvents('frame', props);
 	const { props: styleProps, children: styleChildren } = computeStyle('frame', props.style);
+	const { nodes } = resolveChildren(props.children);
 
 	const hasExplicitSize = props.style?.width !== undefined || props.style?.height !== undefined;
 
@@ -24,7 +22,7 @@ function Container(props: IContainerProps, displayName: string) {
 			Event={Event}
 		>
 			{styleChildren}
-			{props.children}
+			{nodes}
 		</frame>
 	);
 }
@@ -41,14 +39,32 @@ function Container(props: IContainerProps, displayName: string) {
  *
  * Use `style.display` ("row" | "column") to add a UIListLayout automatically.
  */
-export function Div(props: IContainerProps) {
-	return Container(props, 'Div');
+export function Div(props: ContainerProps) {
+	return Container(props);
 }
 
 /**
  * Section — semantic section container. Identical to Div in rendering,
  * exists for semantic clarity (mirrors HTML `<section>`).
  */
-export function Section(props: IContainerProps) {
-	return Container(props, 'Section');
+export function Section(props: ContainerProps) {
+	return Container(props);
+}
+export function Article(props: ContainerProps) {
+	return Container(props);
+}
+export function Aside(props: ContainerProps) {
+	return Container(props);
+}
+export function Header(props: ContainerProps) {
+	return Container(props);
+}
+export function Footer(props: ContainerProps) {
+	return Container(props);
+}
+export function Main(props: ContainerProps) {
+	return Container(props);
+}
+export function Nav(props: ContainerProps) {
+	return Container(props);
 }

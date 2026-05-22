@@ -2,12 +2,20 @@ import React from '@rbxts/react';
 import { computeStyle } from '../utils/computeStyle';
 import { mapEvents } from '../utils/mapEvents';
 import { omitProps } from '../utils/omitProps';
-import type { TextProps } from '../utils/types/common';
+import { resolveChildren } from '../utils/resolveChildren';
+import type { ContainerProps } from '../utils/types/common';
 
 // * change this to use Span objects inside the text button so then images/icons can be put into the button and be aligned with the text
 // * add button types for forms
 
-export interface IButtonProps extends TextProps {
+export type ButtonType = 'button' | 'submit' | 'reset';
+
+export interface IButtonProps extends ContainerProps {
+	/** The type of the button. */
+	type?: ButtonType;
+
+	Text?: string;
+
 	/** Whether the button is non-interactive. Mirrors HTML disabled attribute. */
 	disabled?: boolean;
 }
@@ -22,11 +30,14 @@ export interface IButtonProps extends TextProps {
  * not a navigation element — prefer Button for actions, A for navigation.
  */
 export function Button(props: IButtonProps) {
-	const robloxProps = omitProps(props, ['disabled']);
+	const robloxProps = omitProps(props, ['disabled', 'type', 'Text']);
 	const { Event } = mapEvents('textbutton', props);
 	const { props: styleProps, children: styleChildren } = computeStyle('textbutton', props.style);
+	const { text, nodes } = resolveChildren(props.children);
 
 	const hasExplicitSize = props.style?.width !== undefined || props.style?.height !== undefined;
+
+	const label = props.Text ?? text;
 
 	return (
 		<textbutton
@@ -38,6 +49,27 @@ export function Button(props: IButtonProps) {
 			Event={Event}
 		>
 			{styleChildren}
+			<uilistlayout
+				key='button-layout'
+				FillDirection={Enum.FillDirection.Horizontal}
+				HorizontalAlignment={Enum.HorizontalAlignment.Center}
+				VerticalAlignment={Enum.VerticalAlignment.Center}
+				SortOrder={Enum.SortOrder.LayoutOrder}
+			/>
+			{label !== undefined && (
+				<textlabel
+					key='button-text'
+					Text={label}
+					BackgroundTransparency={1}
+					TextColor3={(styleProps.TextColor3 as Color3) ?? new Color3(1, 1, 1)}
+					FontFace={(styleProps.FontFace as Font) ?? Font.fromEnum(Enum.Font.SourceSans)}
+					TextSize={(styleProps.TextSize as number) ?? 14}
+					AutomaticSize={Enum.AutomaticSize.XY}
+					TextWrap={false}
+					LayoutOrder={5}
+				/>
+			)}
+			{nodes}
 		</textbutton>
 	);
 }

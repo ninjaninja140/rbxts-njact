@@ -2,6 +2,7 @@ import React from '@rbxts/react';
 import { computeStyle } from '../utils/computeStyle';
 import { mapEvents } from '../utils/mapEvents';
 import { omitProps } from '../utils/omitProps';
+import { resolveChildren } from '../utils/resolveChildren';
 import type { TextProps } from '../utils/types/common';
 
 export interface IAnchorProps extends TextProps {
@@ -39,6 +40,7 @@ export function A(properties: IAnchorProps) {
 	const robloxProps = omitProps(mergedProps, ['href']);
 	const { Event } = mapEvents('textbutton', mergedProps);
 	const { props: styleProps, children: styleChildren } = computeStyle('textbutton', mergedProps.style);
+	const { text, nodes } = resolveChildren(mergedProps.children);
 
 	const hasExplicitSize = mergedProps.style?.width !== undefined || mergedProps.style?.height !== undefined;
 
@@ -46,11 +48,13 @@ export function A(properties: IAnchorProps) {
 		<textbutton
 			{...robloxProps}
 			{...styleProps}
+			Text={mergedProps.Text ?? text ?? ''}
 			AutomaticSize={hasExplicitSize ? Enum.AutomaticSize.None : Enum.AutomaticSize.XY}
 			TextWrap={mergedProps.style?.textWrap ?? true}
 			Event={Event}
 		>
 			{styleChildren}
+			{nodes}
 		</textbutton>
 	);
 }

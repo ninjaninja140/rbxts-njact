@@ -4,6 +4,8 @@ import { mapEvents } from '../utils/mapEvents';
 import { omitProps } from '../utils/omitProps';
 import type { BaseProps } from '../utils/types/common';
 
+export type InputType = 'text' | 'password' | 'number' | 'email' | 'search' | 'tel' | 'url';
+
 export interface IInputProps extends BaseProps {
 	/** Current value. → Text. */
 	value?: string;
@@ -18,7 +20,7 @@ export interface IInputProps extends BaseProps {
 	disabled?: boolean;
 
 	/** Whether text is masked (password field). → TextEditable stays true, but content is hidden. */
-	type?: 'text' | 'password' | 'number';
+	type?: InputType;
 
 	/**
 	 * Max visible characters before truncation (not a hard limit on input length).
@@ -29,15 +31,7 @@ export interface IInputProps extends BaseProps {
 	/** Whether to clear the box on focus. → ClearTextOnFocus. */
 	clearOnFocus?: boolean;
 
-	/**
-	 * onChange fires on every keystroke.
-	 * Inherited from BaseProps via Events.
-	 */
-
-	/**
-	 * onCommit fires when the user presses Enter or the box loses focus.
-	 * Inherited from BaseProps via Events.
-	 */
+	defaultValue?: string;
 }
 
 /**
@@ -60,6 +54,7 @@ export function Input(props: IInputProps) {
 		'type',
 		'maxLength',
 		'clearOnFocus',
+		'defaultValue',
 	]);
 
 	const { Event, Change } = mapEvents('textbox', props);
@@ -71,14 +66,14 @@ export function Input(props: IInputProps) {
 		<textbox
 			{...robloxProps}
 			{...styleProps}
-			Text={props.value ?? ''}
+			Text={props.value ?? props.defaultValue ?? ''}
 			PlaceholderText={props.placeholder}
 			PlaceholderColor3={props.placeholderColor}
-			TextEditable={!props.disabled}
+			TextEditable={props.disabled !== true}
 			ClearTextOnFocus={props.clearOnFocus ?? false}
 			MaxVisibleGraphemes={props.maxLength ?? -1}
 			AutomaticSize={hasExplicitSize ? Enum.AutomaticSize.None : Enum.AutomaticSize.XY}
-			TextWrap={props.style?.textWrap ?? false}
+			TextWrap={false}
 			Event={Event}
 			Change={Change}
 		>

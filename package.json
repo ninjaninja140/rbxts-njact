@@ -1,5 +1,5 @@
 {
-	"name": "@njact/components",
+	"name": "@njact/njact",
 	"version": "1.0.0",
 	"main": "out/init.lua",
 	"license": "MIT",
@@ -28,24 +28,24 @@
 		"access": "public"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^2.4.14",
+		"@biomejs/biome": "^2.4.15",
 		"@rbxts/compiler-types": "^3.0.0-types.0",
 		"@rbxts/react-devtools": "17.3.7-ts.1",
 		"@rbxts/react-devtools-core": "17.3.7-ts.1",
-		"@rbxts/types": "^1.0.918",
+		"@rbxts/types": "^1.0.923",
 		"@rbxts/ui-labs": "^2.4.2",
-		"@typescript/native-preview": "beta",
+		"@typescript/native-preview": "^7.0.0-dev.20260522.1",
 		"react-devtools": "4.11.0",
 		"rkkit": "^0.0.1",
 		"roblox-ts": "^3.0.0",
-		"typescript": "latest"
+		"typescript": "^6.0.3"
 	},
 	"peerDependencies": {
 		"@rbxts/react": "17.3.7-ts.1",
 		"@rbxts/react-globals": "17.3.7-ts.1",
 		"@rbxts/react-roblox": "17.3.7-ts.1"
 	},
-	"packageManager": "yarn@4.14.1",
+	"packageManager": "yarn@4.15.0",
 	"dependencies": {
 		"@rbxts/react": "17.3.7-ts.1",
 		"@rbxts/react-globals": "17.3.7-ts.1",

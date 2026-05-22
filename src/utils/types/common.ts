@@ -1,3 +1,4 @@
+import type { ReactChildren } from '../resolveChildren';
 import type { Events } from './events';
 import type { Style } from './style';
 
@@ -35,6 +36,9 @@ export interface TextProps extends BaseProps {
 	/** Text content. → Text property. */
 	Text?: string;
 
+	/** Text content. → Text property. */
+	children?: ReactChildren;
+
 	/** Whether to allow rich text markup. → RichText. */
 	richText?: boolean;
 }
@@ -54,6 +58,10 @@ export interface ImageProps extends BaseProps {
 
 	/** Image transparency (0–1). → ImageTransparency. */
 	imageOpacity?: number;
+}
+
+export interface ContainerProps extends BaseProps {
+	children?: ReactChildren;
 }
 
 /**
